@@ -1,4 +1,4 @@
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Response
 from pydantic import BaseModel, Field
 from datetime import datetime
 import asyncio
@@ -54,12 +54,8 @@ async def generate(request: GenerateRequest):
     try:
         current_requests += 1
         async with request_semaphore:
-            image_bytes, image_base64 = generate_image(request.prompt)
-            return {
-                "status": "success",
-                "image_base64": image_base64,
-                "image_bytes": image_bytes
-            }
+            image_bytes = generate_image(request.prompt)
+            return Response(content=image_bytes, media_type="image/png")
     except Exception as e:
         raise HTTPException(
             status_code=500,
