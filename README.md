@@ -1,4 +1,14 @@
-# FastAPI Project Setup Guide
+# Image Generation Server on Fast API
+
+## Model Information
+This server generates images using the Stable Diffusion 2.1 Base Model, which is a finetuned version of Stable Diffusion 2 Base. 
+More information on this model [here](https://huggingface.co/stabilityai/stable-diffusion-2-1-base).
+This model can run fine on a 16GB VRAM but for memory efficient attention, you can install the xformers library,
+
+```bash
+pip install xformers
+
+```
 
 This guide outlines the steps to set up and run the FastAPI project locally.
 
