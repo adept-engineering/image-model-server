@@ -29,6 +29,6 @@ def generate_image(text_prompt: str) -> tuple[bytes, str]:
     image_bytes = img_byte_arr.getvalue()
 
     # Get base64
-    image_base64 = base64.b64encode(image_bytes).decode('utf-8')
+    image_base64 = base64.b64encode(image_bytes)
 
     return image_bytes, image_base64
